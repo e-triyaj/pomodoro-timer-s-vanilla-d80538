@@ -1,0 +1,389 @@
+{
+  "project": {
+    "name": "pomodoro-timer-vanilla",
+    "displayName": "Pomodoro Timer S Vanilla",
+    "description": "A focus timer with classic Pomodoro intervals (25-minute work sessions, 5-minute short breaks, and 15-minute long breaks) with session tracking and statistics.",
+    "version": "1.0.0",
+    "type": "fullstack-web-application",
+    "category": "productivity",
+    "complexity": "medium",
+    "estimatedDevelopmentTime": "2-3 weeks",
+    "techStack": {
+      "frontend": {
+        "framework": "React",
+        "version": "18.x",
+        "language": "JavaScript/TypeScript",
+        "bundler": "Vite",
+        "styling": "CSS Modules"
+      },
+      "backend": {
+        "framework": "FastAPI",
+        "version": "0.110.x",
+        "language": "Python",
+        "pythonVersion": "3.11+",
+        "orm": "SQLAlchemy"
+      },
+      "database": {
+        "primary": "PostgreSQL",
+        "version": "15.x",
+        "migrationTool": "Alembic"
+      }
+    }
+  },
+  "structure": {
+    "root": {
+      "files": [
+        "README.md",
+        ".gitignore",
+        ".env.example",
+        "docker-compose.yml",
+        "LICENSE",
+        "PROJECT_STRUCTURE.json"
+      ],
+      "directories": {
+        "frontend": {
+          "description": "React frontend application",
+          "files": [
+            "package.json",
+            "vite.config.js",
+            "index.html",
+            ".eslintrc.json",
+            ".env.example",
+            "Dockerfile"
+          ],
+          "directories": {
+            "public": {
+              "files": ["favicon.ico", "tomato-icon.svg", "notification.mp3"]
+            },
+            "src": {
+              "files": ["main.jsx", "App.jsx", "App.css", "index.css"],
+              "directories": {
+                "components": {
+                  "files": [
+                    "Timer.jsx",
+                    "TimerDisplay.jsx",
+                    "TimerControls.jsx",
+                    "SessionTracker.jsx",
+                    "SettingsPanel.jsx",
+                    "StatsPanel.jsx",
+                    "Header.jsx",
+                    "Footer.jsx"
+                  ]
+                },
+                "hooks": {
+                  "files": [
+                    "useTimer.js",
+                    "useNotification.js",
+                    "useLocalStorage.js",
+                    "useSessions.js"
+                  ]
+                },
+                "context": {
+                  "files": ["TimerContext.jsx", "SettingsContext.jsx"]
+                },
+                "services": {
+                  "files": ["api.js", "sessionService.js", "statsService.js"]
+                },
+                "utils": {
+                  "files": ["timeFormat.js", "constants.js", "audio.js"]
+                },
+                "styles": {
+                  "files": ["variables.css", "globals.css"]
+                },
+                "assets": {
+                  "directories": {
+                    "sounds": {},
+                    "images": {}
+                  }
+                }
+              }
+            }
+          }
+        },
+        "backend": {
+          "description": "FastAPI backend application",
+          "files": [
+            "requirements.txt",
+            "pyproject.toml",
+            "alembic.ini",
+            ".env.example",
+            "Dockerfile",
+            "main.py"
+          ],
+          "directories": {
+            "app": {
+              "files": ["__init__.py", "main.py", "config.py", "database.py"],
+              "directories": {
+                "api": {
+                  "files": ["__init__.py", "deps.py"],
+                  "directories": {
+                    "routes": {
+                      "files": [
+                        "__init__.py",
+                        "sessions.py",
+                        "stats.py",
+                        "settings.py",
+                        "health.py"
+                      ]
+                    }
+                  }
+                },
+                "models": {
+                  "files": [
+                    "__init__.py",
+                    "session.py",
+                    "user_settings.py",
+                    "base.py"
+                  ]
+                },
+                "schemas": {
+                  "files": [
+                    "__init__.py",
+                    "session.py",
+                    "stats.py",
+                    "settings.py"
+                  ]
+                },
+                "crud": {
+                  "files": [
+                    "__init__.py",
+                    "session.py",
+                    "settings.py"
+                  ]
+                },
+                "core": {
+                  "files": [
+                    "__init__.py",
+                    "security.py",
+                    "logging.py"
+                  ]
+                },
+                "utils": {
+                  "files": ["__init__.py", "datetime_utils.py"]
+                }
+              }
+            },
+            "alembic": {
+              "files": ["env.py", "script.py.mako"],
+              "directories": {
+                "versions": {}
+              }
+            },
+            "tests": {
+              "files": [
+                "__init__.py",
+                "conftest.py",
+                "test_sessions.py",
+                "test_stats.py",
+                "test_settings.py"
+              ]
+            }
+          }
+        },
+        "docs": {
+          "description": "Project documentation",
+          "files": [
+            "API.md",
+            "ARCHITECTURE.md",
+            "DEPLOYMENT.md",
+            "CONTRIBUTING.md"
+          ]
+        },
+        ".github": {
+          "directories": {
+            "workflows": {
+              "files": ["ci.yml", "deploy.yml"]
+            }
+          }
+        }
+      }
+    }
+  },
+  "features": {
+    "core": [
+      {
+        "id": "pomodoro-timer",
+        "name": "Pomodoro Timer",
+        "description": "25-minute work sessions with countdown",
+        "priority": "critical"
+      },
+      {
+        "id": "short-break",
+        "name": "Short Break Timer",
+        "description": "5-minute short break after each work session",
+        "priority": "critical"
+      },
+      {
+        "id": "long-break",
+        "name": "Long Break Timer",
+        "description": "15-minute long break after 4 work sessions",
+        "priority": "high"
+      },
+      {
+        "id": "timer-controls",
+        "name": "Timer Controls",
+        "description": "Start, pause, resume, reset, and skip controls",
+        "priority": "critical"
+      },
+      {
+        "id": "auto-transition",
+        "name": "Auto Transition",
+        "description": "Automatically transition between work and break sessions",
+        "priority": "high"
+      },
+      {
+        "id": "audio-notifications",
+        "name": "Audio Notifications",
+        "description": "Sound alerts when timer completes",
+        "priority": "high"
+      },
+      {
+        "id": "browser-notifications",
+        "name": "Browser Notifications",
+        "description": "Desktop notifications using Notification API",
+        "priority": "medium"
+      }
+    ],
+    "secondary": [
+      {
+        "id": "session-tracking",
+        "name": "Session Tracking",
+        "description": "Track completed pomodoros and persist to database",
+        "priority": "high"
+      },
+      {
+        "id": "statistics",
+        "name": "Statistics Dashboard",
+        "description": "View daily, weekly, and monthly productivity stats",
+        "priority": "medium"
+      },
+      {
+        "id": "custom-settings",
+        "name": "Customizable Intervals",
+        "description": "Allow users to customize work and break durations",
+        "priority": "medium"
+      },
+      {
+        "id": "task-labeling",
+        "name": "Task Labels",
+        "description": "Label sessions with task descriptions",
+        "priority": "low"
+      }
+    ]
+  },
+  "api": {
+    "baseUrl": "/api/v1",
+    "endpoints": [
+      {
+        "path": "/sessions",
+        "methods": ["GET", "POST"],
+        "description": "List and create pomodoro sessions"
+      },
+      {
+        "path": "/sessions/{id}",
+        "methods": ["GET", "PATCH", "DELETE"],
+        "description": "Manage individual sessions"
+      },
+      {
+        "path": "/stats/daily",
+        "methods": ["GET"],
+        "description": "Get daily statistics"
+      },
+      {
+        "path": "/stats/weekly",
+        "methods": ["GET"],
+        "description": "Get weekly statistics"
+      },
+      {
+        "path": "/settings",
+        "methods": ["GET", "PUT"],
+        "description": "Get and update user settings"
+      },
+      {
+        "path": "/health",
+        "methods": ["GET"],
+        "description": "Health check endpoint"
+      }
+    ]
+  },
+  "database": {
+    "tables": [
+      {
+        "name": "sessions",
+        "columns": [
+          "id (UUID, PK)",
+          "session_type (ENUM: work, short_break, long_break)",
+          "duration_seconds (INTEGER)",
+          "started_at (TIMESTAMP)",
+          "completed_at (TIMESTAMP)",
+          "task_label (VARCHAR, nullable)",
+          "completed (BOOLEAN)",
+          "created_at (TIMESTAMP)"
+        ]
+      },
+      {
+        "name": "user_settings",
+        "columns": [
+          "id (UUID, PK)",
+          "work_duration (INTEGER, default 1500)",
+          "short_break_duration (INTEGER, default 300)",
+          "long_break_duration (INTEGER, default 900)",
+          "sessions_until_long_break (INTEGER, default 4)",
+          "auto_start_breaks (BOOLEAN)",
+          "auto_start_pomodoros (BOOLEAN)",
+          "sound_enabled (BOOLEAN)",
+          "updated_at (TIMESTAMP)"
+        ]
+      }
+    ]
+  },
+  "deployment": {
+    "containerization": {
+      "tool": "Docker",
+      "compose": true,
+      "services": ["frontend", "backend", "postgres"]
+    },
+    "environments": [
+      {
+        "name": "development",
+        "frontend": "http://localhost:5173",
+        "backend": "http://localhost:8000",
+        "database": "localhost:5432"
+      },
+      {
+        "name": "production",
+        "frontend": "Vercel/Netlify",
+        "backend": "Railway/Render/Fly.io",
+        "database": "Managed PostgreSQL (Supabase/Neon)"
+      }
+    ],
+    "cicd": {
+      "platform": "GitHub Actions",
+      "stages": ["lint", "test", "build", "deploy"]
+    }
+  },
+  "scripts": {
+    "frontend": {
+      "dev": "vite",
+      "build": "vite build",
+      "preview": "vite preview",
+      "lint": "eslint src"
+    },
+    "backend": {
+      "dev": "uvicorn app.main:app --reload",
+      "start": "uvicorn app.main:app --host 0.0.0.0 --port 8000",
+      "test": "pytest",
+      "migrate": "alembic upgrade head"
+    }
+  },
+  "qualityAssurance": {
+    "testing": {
+      "frontend": ["Vitest", "React Testing Library"],
+      "backend": ["pytest", "httpx"]
+    },
+    "linting": {
+      "frontend": ["ESLint", "Prettier"],
+      "backend": ["ruff", "black", "mypy"]
+    }
+  }
+}

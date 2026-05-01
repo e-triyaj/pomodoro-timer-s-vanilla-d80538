@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pomodoro Timer — Focus Session</title>
+  <link rel="stylesheet" href="../styles/design-system.css">
+</head>
+<body class="mode-work">
+  <a href="#main" class="skip-link">Skip to main content</a>
+
+  <header class="app-header" role="banner">
+    <h1 class="app-title">Pomodoro</h1>
+    <nav aria-label="Primary">
+      <a href="settings.html" class="nav-link" aria-label="Open settings and history">Settings</a>
+    </nav>
+  </header>
+
+  <main id="main" class="app-main" role="main">
+    <section class="session-info" aria-live="polite">
+      <p class="session-label">Work Session</p>
+      <p class="session-counter">Cycle <span aria-label="current cycle">1</span> of 4</p>
+    </section>
+
+    <section class="timer-section" aria-labelledby="timer-heading">
+      <h2 id="timer-heading" class="visually-hidden">Time Remaining</h2>
+      <div
+        class="timer-display"
+        role="timer"
+        aria-live="polite"
+        aria-atomic="true"
+      >
+        <span class="timer-time">25:00</span>
+      </div>
+      <progress
+        class="timer-progress"
+        value="0"
+        max="1500"
+        aria-label="Session progress"
+      >0%</progress>
+    </section>
+
+    <section class="controls" aria-label="Timer controls">
+      <button type="button" class="btn btn-primary" aria-keyshortcuts="Space">
+        Start
+      </button>
+      <button type="button" class="btn btn-secondary" aria-keyshortcuts="R">
+        Reset
+      </button>
+      <button type="button" class="btn btn-tertiary" aria-keyshortcuts="S">
+        Skip
+      </button>
+    </section>
+
+    <section class="status" aria-live="polite">
+      <p class="status-text">Press Start to begin your focus session.</p>
+    </section>
+  </main>
+
+  <footer class="app-footer" role="contentinfo">
+    <p>Stay focused. <kbd>Space</kbd> Start/Pause · <kbd>R</kbd> Reset · <kbd>S</kbd> Skip</p>
+  </footer>
+</body>
+</html>

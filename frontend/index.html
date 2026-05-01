@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pomodoro — Focus Timer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="site-header">
+  <a href="/" class="brand" aria-label="Pomodoro home">
+    <svg viewBox="0 0 64 64" width="40" height="40" xmlns="http://www.w3.org/2000/svg" aria-label="PTV monogram">
+      <circle cx="32" cy="32" r="32" fill="#f00ad5"/>
+      <text x="50%" y="50%" dy="0.35em" text-anchor="middle" fill="#e9eae1" font-family="system-ui, sans-serif" font-weight="700" font-size="20">PTV</text>
+    </svg>
+    <span class="brand-name">Pomodoro</span>
+  </a>
+  <nav class="site-nav" aria-label="Primary">
+    <span class="nav-item" id="navStatus">Ready to focus</span>
+  </nav>
+</header>
+
+<main class="app-main">
+  <section class="timer-card" aria-labelledby="phaseHeading">
+    <p class="phase-label" id="phaseLabel">Work session</p>
+    <h1 class="phase-heading" id="phaseHeading">Focus. One interval at a time.</h1>
+
+    <div class="timer-display" id="timerDisplay" role="timer" aria-live="polite" aria-atomic="true">
+      <span class="time-value" id="timeValue">25:00</span>
+    </div>
+
+    <p class="cycle-meta">
+      <span>Cycle</span>
+      <span id="cycleCount">1</span>
+    </p>
+
+    <div class="controls">
+      <button type="button" class="btn btn-primary" id="startBtn">Start</button>
+      <button type="button" class="btn btn-secondary" id="pauseBtn" disabled>Pause</button>
+      <button type="button" class="btn btn-ghost" id="resetBtn">Reset</button>
+      <button type="button" class="btn btn-ghost" id="skipBtn">Skip</button>
+    </div>
+
+    <div class="announcement" id="announcement" role="status" aria-live="assertive"></div>
+  </section>
+
+  <section class="info-panel" aria-label="Interval guide">
+    <article class="info-block">
+      <h2 class="info-title">Work</h2>
+      <p class="info-body">Twenty-five uninterrupted minutes. Single task, single mind.</p>
+      <p class="info-meta" id="workMeta">25:00</p>
+    </article>
+    <article class="info-block">
+      <h2 class="info-title">Break</h2>
+      <p class="info-body">Five minutes to breathe. Step away from the screen.</p>
+      <p class="info-meta" id="breakMeta">05:00</p>
+    </article>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <p>Discipline through rhythm.</p>
+</footer>
+
+<script type="module" src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pomodoro Timer — Break Time</title>
+  <link rel="stylesheet" href="../styles/design-system.css">
+</head>
+<body class="mode-break">
+  <a href="#main" class="skip-link">Skip to main content</a>
+
+  <header class="app-header" role="banner">
+    <h1 class="app-title">Pomodoro</h1>
+    <nav aria-label="Primary">
+      <a href="settings.html" class="nav-link">Settings</a>
+    </nav>
+  </header>
+
+  <main id="main" class="app-main" role="main">
+    <section class="session-info" aria-live="polite">
+      <p class="session-label">Break Time ☕</p>
+      <p class="session-counter">After cycle <span>1</span></p>
+    </section>
+
+    <section class="timer-section" aria-labelledby="timer-heading">
+      <h2 id="timer-heading" class="visually-hidden">Break Time Remaining</h2>
+      <div
+        class="timer-display"
+        role="timer"
+        aria-live="polite"
+        aria-atomic="true"
+      >
+        <span class="timer-time">05:00</span>
+      </div>
+      <progress
+        class="timer-progress"
+        value="0"
+        max="300"
+        aria-label="Break progress"
+      >0%</progress>
+    </section>
+
+    <section class="controls" aria-label="Break controls">
+      <button type="button" class="btn btn-primary">Start Break</button>
+      <button type="button" class="btn btn-tertiary">Skip Break</button>
+    </section>
+
+    <section class="status" aria-live="polite">
+      <p class="status-text">Stand up, stretch, hydrate. Next work session starts after this break.</p>
+    </section>
+  </main>
+
+  <footer class="app-footer" role="contentinfo">
+    <p>Recharge. <kbd>Space</kbd> Start/Pause · <kbd>S</kbd> Skip</p>
+  </footer>
+</body>
+</html>
